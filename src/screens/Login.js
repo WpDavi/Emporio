@@ -9,6 +9,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
+import { styled } from "styled-components";
 
 export default function Login() {
   const navigation = useNavigation();
@@ -66,17 +67,59 @@ export default function Login() {
         <TouchableOpacity style={styles.button} onPress={login}>
           <Text style={styles.txtbutton}> ENTRAR </Text>
         </TouchableOpacity>
+        <TouchableOpacity>
+          <TxtSenhaEsq>Esqueci a senha</TxtSenhaEsq>
+        </TouchableOpacity> 
+        
+        <TxtNoCont>
+          Não possui conta?
+        </TxtNoCont>
 
-        <TouchableOpacity
-          style={styles.buttoncadastro}
+        <ContaiCadasT>
+          <TouchableOpacity
           onPress={() => navigation.navigate("Registration")}
-        >
-          <Text style={styles.txtcadastro}>Não sou cadastrado!!!</Text>
+          >
+          <TxtCadastro>Cadastrar</TxtCadastro>          
         </TouchableOpacity>
+          <TxtNoCont>
+            ou
+          </TxtNoCont>
+          <TouchableOpacity
+          onPress={() => navigation.navigate("MainTab")}
+          >
+          <TxtCadastr>entre como visitante</TxtCadastr>          
+        </TouchableOpacity>
+        </ContaiCadasT>            
+                
       </View>
     </ImageBackground>
   );
 }
+
+const TxtSenhaEsq = styled.Text`
+color: white;
+font-weight: bold;
+margin-top: 10px;
+margin-bottom: 10px;
+`
+const TxtNoCont = styled.Text`
+color: white;
+`
+const ContaiCadasT = styled.View`
+margin-top: 10px;
+flex-direction: row;
+`
+const TxtCadastro = styled.Text`
+color: white;
+font-weight: bold;
+margin-right: 5px;
+`
+const TxtCadastr = styled.Text`
+color: white;
+font-weight: bold;
+margin-left: 5px;
+`
+
 
 const styles = StyleSheet.create({
   containerinfo: {
@@ -107,7 +150,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor: "#092301",
+    backgroundColor: 'black',
     padding: 10,
     marginTop: 40,
     borderRadius: 20,
@@ -125,7 +168,5 @@ const styles = StyleSheet.create({
 
   txtcadastro: {
     color: "white",
-    fontSize: 20,
-    marginTop: 160,
   },
 });
